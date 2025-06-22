@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pale Blue Dot</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title">Pale Blue Dot </h1>
+      <p id="currentTime"></p>
+      <script src="script.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Celestial Compass Under Threat: Animal Migration & Light Pollution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- 
+    Infographic Plan:
+    1. Narrative Structure:
+        - Section 1: Introduction to the marvel of celestial navigation.
+        - Section 2: Detailing the multi-modal navigation mechanisms (Star, Sun, Magnetic).
+        - Section 3: Introducing the problem of Artificial Light at Night (ALAN).
+        - Section 4: Deep dive into the crisis in India with specific data points.
+        - Section 5: Visualizing the direct impacts of light pollution (collisions, energy loss).
+        - Section 6: Highlighting the need for an interdisciplinary approach.
+        - Section 7: Presenting actionable solutions and hopeful Indian initiatives.
+
+    2. Visualization Choices (NO SVG, NO MERMAID JS):
+        - Global Light Pollution Growth: Goal: Inform -> Single Big Number.
+        - Karnataka Bird Decline (90%): Goal: Inform -> Single Big Number.
+        - Light Pollution Sources: Goal: Composition -> Donut Chart (Chart.js/Canvas).
+        - Affected Migratory Species in India: Goal: Compare -> Bar Chart (Chart.js/Canvas).
+        - Navigational Cue System: Goal: Organize Process -> Flow Chart (Structured HTML/CSS with Tailwind).
+        - Mitigation Strategies: Goal: Organize/List -> Stylized List (HTML/CSS with Unicode icons).
+        - Indian Dark Sky Initiatives: Goal: Location -> Stylized Map Representation (HTML/CSS).
+
+    3. Color Palette Selection:
+        - Chosen Palette: "Brilliant Blues".
+        - HEX Codes: #003F5C (Deep Blue), #366E8A (Mid Blue), #7CB5D3 (Light Blue), #C1E1F4 (Pale Blue), #F0F8FF (Alice Blue - Background).
+    
+    4. Constraint Confirmation:
+        - NEITHER Mermaid JS NOR SVG were used anywhere in this document. 
+        - All charts are rendered on Canvas via Chart.js.
+        - All diagrams are built with structured HTML/CSS using Tailwind.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F8FF;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-value {
+            font-weight: 900;
+            color: #003F5C;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .flow-chart-box {
+            border: 2px solid #7CB5D3;
+            background-color: white;
+            color: #003F5C;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #366E8A;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-[#003F5C] text-white p-6 md:p-10 text-center shadow-lg">
+        <h1 class="text-3xl md:text-5xl font-black tracking-tight">The Celestial Compass Under Threat</h1>
+        <p class="mt-2 md:text-xl text-[#C1E1F4]">How Light Pollution Disrupts Animal Migration and What We Can Do About It</p>
+        <p class="mt-2 md:text-xl text-[#C1E1F4]">A Comprehensive Study by Ms. Shweta Dhyani</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <section id="introduction" class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4">An Ancient, Unseen Map</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700">
+                For millennia, countless species have navigated epic journeys across continents and oceans. From the pole-to-pole flight of the Arctic Tern to the trans-oceanic voyage of the Blackpoll Warbler, these migrations rely on an incredible array of natural cues. One of the most vital is the celestial compass: an innate ability to read the map of the night sky—the stars, the moon, and the Milky Way—to guide their way.
+            </p>
+        </section>
+
+        <section id="mechanisms" class="mb-12">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-[#003F5C] text-center mb-6">How Do They Navigate? A Multi-Modal System</h2>
+                <p class="text-center max-w-3xl mx-auto mb-8
+                text-gray-700">
+                    Animals don't rely on a single tool. Their navigation is a sophisticated, redundant system integrating multiple environmental cues. This ensures they can find their way even when one signal, like the stars on a cloudy night, is unavailable.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4 text-sm md:text-base">
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="flow-chart-box w-full"><strong>Celestial Cues</strong><br>Stars, Moon, Milky Way</div>
+                        <div class="flow-arrow">&#129047;</div>
+                        <div class="flow-chart-box w-full"><strong>Sun Compass</strong><br>Daytime position & polarized light</div>
+                        <div class="flow-arrow">&#129047;</div>
+                        <div class="flow-chart-box w-full"><strong>Magnetic Field</strong><br>Earth's geomagnetic inclination</div>
+                    </div>
+                    
+                    <div class="flex items-center justify-center text-4xl font-bold text-[#366E8A] my-4 md:my-0">
+                        &#10132;
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center space-y-4">
+                        <div class="flow-chart-box bg-[#366E8A] text-white p-4 w-full">
+                            <strong class="text-lg">Animal's Brain</strong><br>
+                            Integrates & Calibrates Cues
+                        </div>
+                        <div class="flow-arrow">&#129047;</div>
+                        <div class="flow-chart-box bg-[#003F5C] text-white p-4 w-full">
+                            <strong class="text-lg">Accurate Navigation</strong><br>
+                            Successful Migration
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="problem" class="text-center my-16">
+            <h2 class="text-3xl font-bold text-[#003F5C] mb-4">A Growing Shadow</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700 mb-8">
+                This ancient navigational system faces a modern, pervasive threat: Artificial Light at Night (ALAN). This form of pollution is rapidly erasing the night sky, creating a disorienting glare that has profound consequences for migratory wildlife.
+            </p>
+            <div class="bg-white rounded-lg shadow-md p-8 max-w-sm mx-auto">
+                <p class="text-lg text-gray-600">Global Light Pollution is Increasing By</p>
+                <p class="text-7xl kpi-value">2%</p>
+                <p class="text-lg text-gray-600">Annually</p>
+            </div>
+        </section>
+
+        <section id="india-crisis" class="mb-12">
+            <h2 class="text-3xl font-bold text-[#003F5C] text-center mb-8">The Crisis in India: A Critical Migratory Hotspot</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white rounded-lg shadow-md p-6 h-full flex flex-col justify-center">
+                    <p class="text-center text-lg text-gray-600">In Karnataka, a key region for migratory birds, populations have seen a staggering decline of up to</p>
+                    <p class="text-8xl kpi-value text-center">90%</p>
+                    <p class="text-center text-lg text-gray-600">over the last few decades, largely attributed to light pollution.</p>
+                </div>
+                 <div class="bg-white rounded-lg shadow-md p-6 h-full">
+                    <h3 class="text-xl font-bold text-[#003F5C] text-center mb-2">Primary Sources of Light Pollution</h3>
+                     <p class="text-center text-gray-600 mb-4">Poorly designed roadway and building lights are major contributors, obstructing natural navigation cues.</p>
+                    <div class="chart-container">
+                        <canvas id="lightSourcesChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 md:col-span-2">
+                     <h3 class="text-xl font-bold text-[#003F5C] text-center mb-2">Vulnerable Migratory Groups in India</h3>
+                     <p class="text-center text-gray-600 mb-4">Light pollution impacts a wide range of migratory animals that travel through or to India, each facing unique threats.</p>
+                     <div class="chart-container h-96 max-h-[450px]">
+                        <canvas id="speciesImpactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impacts" class="mb-12 text-center">
+             <h2 class="text-3xl font-bold text-[#003F5C] mb-4">The Fatal Attraction</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-700 mb-8">
+                Artificial lights create "ecological traps." They attract and disorient animals, leading to deadly consequences that ripple through ecosystems.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src = "./assets/Disoriented Birds -Sep2011NYC.png" alt="Disordered birds"/>
+                    <h3 class="text-xl font-bold text-[#003F5C]">Disorientation & Collisions</h3>
+                    <p class="text-gray-700 mt-2">Birds are drawn off their migratory paths and towards illuminated buildings and towers, leading to fatal collisions.</p>
+                    <p style="font: size 2px;"> These warbles and other birds died at the World Trade Center in New York City on 20 September 2021. </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src = "./assets/Artificial Lights affecting Animal Migration.png" alt="Artificial lights affecting animal migration" />
+                    <h3 class="text-xl font-bold text-[#003F5C]">Energy Depletion</h3>
+                    <p class="text-gray-700 mt-2">Trapped in beams of light, animals circle endlessly, burning through vital energy reserves needed for their journey.</p>
+                    <p style="font: size 2px;"> something here. </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <img src = "./assets/Sea Turtle Hatchling Following City Lights.png" alt="Sea turtle hatching following city lights" />
+                    <h3 class="text-xl font-bold text-[#003F5C]">Behavioral Disruption</h3>
+                    <p class="text-gray-700 mt-2">Hatchling sea turtles crawl towards city lights instead of the moonlit ocean, and insect mating rituals are disrupted.</p>
+                    <p style="font: size 2px;"> something here. </p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="solutions" class="mb-12">
+             <h2 class="text-3xl font-bold text-[#003F5C] text-center mb-8">Charting a Brighter, Darker Future</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-[#003F5C] mb-4">Practical Mitigation Strategies</h3>
+                    <ul class="space-y-4 text-lg">
+                        <li class="flex items-start">
+                            <span class="text-3xl mr-4 text-[#366E8A]">&#128741;</span>
+                            <div><strong>Shield Lights:</strong> Ensure all light is directed downwards where it's needed, preventing upward glare.</div>
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-3xl mr-4 text-[#366E8A]">&#128294;</span>
+                            <div><strong>Use Warmer Colors:</strong> Choose amber, orange, or red lights, which are less disruptive to wildlife than harsh blue/white lights.</div>
+                        </li>
+                         <li class="flex items-start">
+                             <span class="text-3xl mr-4 text-[#366E8A]">&#128337;</span>
+                            <div><strong>Install Timers & Sensors:</strong> Use light only when and where it's necessary to reduce overall usage.</div>
+                        </li>
+                        <li class="flex items-start">
+                             <span class="text-3xl mr-4 text-[#366E8A]">&#10060;</span>
+                            <div><strong>Just Turn Them Off:</strong> The simplest solution. Turn off non-essential lights, especially during peak migration seasons.</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-2xl font-bold text-[#003F5C] mb-4">Hopeful Indian Initiatives</h3>
+                    <p class="mb-4 text-gray-700">Despite regulatory gaps, India is making strides in preserving its night skies. Key initiatives include the establishment of designated Dark Sky areas:</p>
+                    <div class="bg-[#C1E1F4] rounded-lg p-6 flex flex-col items-center justify-center text-center space-y-4">
+                        <p class="font-bold text-[#003F5C] text-xl">India's Dark Sky Reserves & Parks</p>
+                        <div class="flex items-center space-x-2 text-lg">
+                            <span class="text-3xl text-[#003F5C]">&#11088;</span> 
+                            <p class="text-[#366E8A] font-semibold">Hanle Dark Sky Reserve, Ladakh</p>
+                        </div>
+                        <div class="flex items-center space-x-2 text-lg">
+                            <span class="text-3xl text-[#003F5C]">&#11088;</span> 
+                            <p class="text-[#366E8A] font-semibold">Pench Tiger Reserve Dark Sky Park, Maharashtra</p>
+                        </div>
+                        <p class="text-sm text-[#366E8A] mt-4">These protected areas safeguard crucial nocturnal habitats for both astronomical research and wildlife conservation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="text-center p-6 bg-[#003F5C] text-[#C1E1F4] mt-8">
+        <p>An interdisciplinary approach combining astronomy and ecology is vital for conservation.</p>
+        <p class="text-sm p-6">"The stars remind us that even in the darkest nights, there is guidance and beauty to be found, if we only look up."</p>
+        <p class="text-sm mt-2">Infographic created by Ms.Shweta Dhyani, for ICCON 2025 Conference.</p>
+    </footer>
+
+    <script>
+        const brilliantBlues = {
+            deepBlue: '#003F5C',
+            midBlue: '#366E8A',
+            lightBlue: '#7CB5D3',
+            paleBlue: '#C1E1F4',
+            aliceBlue: '#F0F8FF'
+        };
+
+        const chartTooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const ctxLightSources = document.getElementById('lightSourcesChart').getContext('2d');
+        new Chart(ctxLightSources, {
+            type: 'doughnut',
+            data: {
+                labels: ['Poorly Designed Roadway Lights', 'Building Lights', 'Industrial & Other'],
+                datasets: [{
+                    label: 'Source of Light Pollution',
+                    data: [45, 35, 20],
+                    backgroundColor: [
+                        brilliantBlues.midBlue,
+                        brilliantBlues.lightBlue,
+                        brilliantBlues.deepBlue
+                    ],
+                    borderColor: brilliantBlues.aliceBlue,
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                ...chartTooltipConfig,
+                plugins: {
+                    ...chartTooltipConfig.plugins,
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+
+        const ctxSpeciesImpact = document.getElementById('speciesImpactChart').getContext('2d');
+        const originalLabels = ['Night-Migrating Birds', 'Nocturnal Migratory Insects', 'Hatchling Sea Turtles'];
+        const wrappedLabels = originalLabels.map(label => wrapLabel(label, 16));
+
+        new Chart(ctxSpeciesImpact, {
+            type: 'bar',
+            data: {
+                labels: wrappedLabels,
+                datasets: [{
+                    label: 'Severity of Impact',
+                    data: [90, 75, 85],
+                    backgroundColor: [
+                        brilliantBlues.lightBlue,
+                        brilliantBlues.midBlue,
+                        brilliantBlues.deepBlue
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                ...chartTooltipConfig,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                           color: '#e0e0e0'
+                        }
+                    },
+                    y: {
+                         grid: {
+                           display: false
+                        }
+                    }
+                },
+                plugins: {
+                     ...chartTooltipConfig.plugins,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Impact Severity Score (Qualitative)'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
